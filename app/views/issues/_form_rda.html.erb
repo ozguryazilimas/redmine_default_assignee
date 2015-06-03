@@ -1,0 +1,33 @@
+
+<%
+    if @issue.project.module_enabled?('default_assignee')
+      rda_settings = RdaProjectSetting.settings_for_project(@issue.project).default_assignee
+%>
+  <script type="text/javascript">
+    var rda_status_user_mapping = <%= raw rda_settings.to_json %>;
+
+    function rda_update_issue_assignee() {
+      var status_id = $('select#issue_status_id').val();
+      var new_user_id = rda_status_user_mapping[status_id];
+
+      if (typeof new_user_id !== 'undefined') {
+        // console.log('rda updating user status: ' + status_id + ' user: ' + new_user_id);
+        $('select#issue_assigned_to_id').val(new_user_id);
+      }
+    }
+
+    $(function() {
+      rda_update_issue_assignee();
+
+      /* Redmine reloads the form with XHR everytime a core attribute select
+         changes, so we probably do not need to assign events anywhere but just
+         redo selection after DOM load is finished
+      $('select#issue_status_id').on('change', function() {
+        rda_update_issue_assignee();
+      });
+      */
+    });
+
+  </script>
+<% end %>
+
