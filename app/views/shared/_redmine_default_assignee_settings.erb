@@ -1,0 +1,20 @@
+<fieldset class="box">
+  <legend>
+    <b>
+      <%= l('redmine_default_assignee.settings.header') %>
+    </b>
+  </legend>
+
+  <div class="tabular settings">
+    <%= h l('redmine_default_assignee.settings.info') %>
+    <br><br>
+
+    <% IssueStatus.order(:position).each do |issue_status| %>
+      <p>
+        <%= content_tag :label, issue_status.name %>
+        <%= select_tag "settings[default_assignee][#{issue_status.id}]", options_for_select(all_users, settings[:default_assignee][issue_status.id]), :include_blank => true %>
+      </p>
+    <% end %>
+  </div>
+</fieldset>
+

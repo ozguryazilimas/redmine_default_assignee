@@ -1,0 +1,8 @@
+
+<%=
+  render :partial => 'shared/redmine_default_assignee_settings', :locals => {
+    :settings => settings,
+    :all_users => User.active.order(:firstname, :lastname).map{|k| ["#{k.firstname} #{k.lastname}", k.id]}
+  }
+%>
+

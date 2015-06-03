@@ -1,0 +1,11 @@
+# Turkish strings go here
+tr:
+  permission_rda_default_assignee: 'Öntanımlı Atama'
+  redmine_default_assignee:
+    settings:
+      header: 'İş Durumu Öntanımlı Atanan Ayarları'
+      info: 'İş kaydı formunda seçilen iş durumuna göre otomatik seçilen kullanıcılar.'
+    project_settings:
+      label_default_assignee: 'Öntanımlı Atanan'
+      error_update_not_successful: 'Proje ayarları güncellenirken bir sorun oluştu'
+

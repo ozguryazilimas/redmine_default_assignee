@@ -1,0 +1,11 @@
+# English strings go here
+en:
+  permission_rda_default_assignee: 'Default Assignee'
+  redmine_default_assignee:
+    settings:
+      header: 'Issue Status Default Assignee Settings'
+      info: 'Users that will be automatically selected based on the selected issue status.'
+    project_settings:
+      label_default_assignee: 'Default Assignee'
+      error_update_not_successful: 'Unable to update project settings'
+
