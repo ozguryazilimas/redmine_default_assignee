@@ -2,9 +2,9 @@
 class RdaProjectSetting < ActiveRecord::Base
   unloadable
 
-  serialize :default_assignee
+  attr_accessible :project_id, :default_assignee
 
-  before_save :sanitize_default_assignee
+  serialize :default_assignee
 
   scope :for_project, ->(project) {
     proj_id = project.is_a?(Class) ? project.id : project
@@ -14,11 +14,6 @@ class RdaProjectSetting < ActiveRecord::Base
   scope :settings_for_project, ->(proj_id) {
     for_project(proj_id).first_or_initialize(RedmineDefaultAssignee.settings)
   }
-
-
-  def sanitize_project_settings
-    default_assignee.reject!{|k, v| v.blank?}
-  end
 
 end
 

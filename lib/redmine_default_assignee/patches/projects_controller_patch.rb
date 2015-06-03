@@ -22,10 +22,14 @@ module RedmineDefaultAssignee
           @settings = params[:settings]
 
           if params[:reset].present?
-            RtwProjectSetting.destroy_all(:project_id => @project.id)
+            RdaProjectSetting.destroy_all(:project_id => @project.id)
             flash[:notice] = l(:notice_successful_update)
           else
-            project_setting = RtwProjectSetting.for_project(@project).first_or_initialize
+            if params[:settings] && params[:settings][:default_assignee].present?
+              params[:settings][:default_assignee].reject!{|k, v| v.blank?}
+            end
+
+            project_setting = RdaProjectSetting.for_project(@project).first_or_initialize
             project_setting.assign_attributes(@settings)
 
             if project_setting.save!
