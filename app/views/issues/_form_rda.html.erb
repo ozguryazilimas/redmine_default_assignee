@@ -21,11 +21,12 @@
 
       /* Redmine reloads the form with XHR everytime a core attribute select
          changes, so we probably do not need to assign events anywhere but just
-         redo selection after DOM load is finished
+         redo selection after DOM load is finished. Enable the code below
+         to make sure the owner is set everytime issue status changes
+      */
       $('select#issue_status_id').on('change', function() {
         rda_update_issue_assignee();
       });
-      */
     });
 
   </script>
