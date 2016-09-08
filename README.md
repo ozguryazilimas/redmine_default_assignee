@@ -1,15 +1,22 @@
 # Default Assignee
-Redmine iş kayıtlarında belirli bir 'durum' seçildiğinde atanan bölümünün eklenti ayarlarında belirtilmiş kullanıcı seçilecek şekilde değişmesini sağlar.
-Redmine v3 uyumludur.
 
-## Özellikleri
-1. Öntanımlı ayar kaydedilebilir.
-2. Her proje için etkin/pasif edilebilir.
-3. Her proje için ayrı ayar kaydedilebilir.
+Automatically assigns an issue to a user if the issue status and user is configured in plugin settings page.
+It is compatible for Redmine v3.
 
-## Ayarlar
-* Proje bazlı eklenti ayarlarına yönetici hesabı ile proje seçildikten sonra /settings/plugin/redmine_default_assignee adresinden ulaşılabilir.
-* Ayar ekranında 'durum'ların bir listesi görünür. Her bir 'durum'un karşısındaki menüden durumu seçince tetiklenecek kullanıcı seçilebilir.
-* Tüm projeler için öntanımlı bir ayar yapılmak istenirse yönetici hesabı ile /administration/Plugins/redmine_default_assignee configure ile ‘durum’un karşısındaki menüden durum atananı seçilir.
+## Features
 
-Not: Bu eklentinin gözükmesi için projenin 'Ayarlar' bağlantısında bulunan ‘Modüller' sekmesinde ‘Default Assignee’ etkin olmalıdır.
+1. Default settings can be saved.
+2. Plugin can be activate or passivate for each project.
+3. You can configure default assignee to save different settings for each project.
+
+
+## Settings
+
+* Project-based plugin settings are accessible at /settings/plugin/redmine_default_assignee address with administration account after selecting project.
+* Settings page has a list of issue statuses. You can define users that will be automatically assigned next to each status.
+* If you want to set default settings for all projects,with the administration accounts go to this link: 
+/administration/Plugins/redmine_default_assignee. By clicking configure, assignee can be selected 
+
+Note: In order to see this plugin, 'Default Assignee' must be enabled in the project settings, 'Modules' tab.
+
+
