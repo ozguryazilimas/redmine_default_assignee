@@ -1,3 +1,4 @@
+require 'redmine'
 require 'redmine_default_assignee'
 
 Redmine::Plugin.register :redmine_default_assignee do
