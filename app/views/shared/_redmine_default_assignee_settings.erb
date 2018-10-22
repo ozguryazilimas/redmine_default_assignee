@@ -12,7 +12,7 @@
     <% IssueStatus.order(:position).each do |issue_status| %>
       <p>
         <%= content_tag :label, issue_status.name %>
-        <%= select_tag "settings[default_assignee][#{issue_status.id}]", options_for_select(all_users, settings[:default_assignee][issue_status.id.to_s]), :include_blank => true %>
+        <%= select_tag "settings[default_assignee][#{issue_status.id}]", principals_options_for_select(all_users, settings.with_indifferent_access[:default_assignee][issue_status.id.to_s]), :include_blank => true %>
       </p>
     <% end %>
   </div>

@@ -10,7 +10,7 @@
   <%=
     render :partial => 'shared/redmine_default_assignee_settings', :locals => {
       :settings => settings,
-      :all_users => @project.users.order(:firstname, :lastname).map{|k| ["#{k.firstname} #{k.lastname}", k.id]}
+      :all_users => @project.assignable_users
     }
   %>
 

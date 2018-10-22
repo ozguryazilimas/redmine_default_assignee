@@ -15,5 +15,14 @@ class RdaProjectSetting < ActiveRecord::Base
     for_project(proj_id).first_or_initialize(RedmineDefaultAssignee.settings)
   }
 
+
+  # includes all users and groups for all application
+  def self.all_assignable_users_and_groups
+    types = ['User']
+    types << 'Group' if Setting.issue_group_assignment?
+
+    Principal.active.joins(:members => :roles).where(:type => types, :roles => {:assignable => true}).distinct.sorted
+  end
+
 end
 
