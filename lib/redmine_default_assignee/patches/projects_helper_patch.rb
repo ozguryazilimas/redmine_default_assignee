@@ -8,7 +8,6 @@ module RedmineDefaultAssignee
         base.extend(ClassMethods)
         base.send(:include, InstanceMethods)
         base.class_eval do
-          unloadable
           alias_method_chain :project_settings_tabs, :redmine_default_assignee
         end
       end

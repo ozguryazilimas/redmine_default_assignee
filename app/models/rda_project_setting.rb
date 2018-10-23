@@ -1,6 +1,5 @@
 
 class RdaProjectSetting < ActiveRecord::Base
-  unloadable
 
   attr_accessible :project_id, :default_assignee
 

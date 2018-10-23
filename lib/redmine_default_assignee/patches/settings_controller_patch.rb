@@ -5,16 +5,10 @@ module RedmineDefaultAssignee
   module Patches
     module SettingsControllerPatch
       def self.included(base)
-        base.extend(ClassMethods)
         base.send(:include, InstanceMethods)
         base.class_eval do
-          unloadable
           alias_method_chain :plugin, :redmine_default_assignee
         end
-      end
-
-      module ClassMethods
-
       end
 
       module InstanceMethods
