@@ -1,4 +1,4 @@
-<% settings = RdaProjectSetting.settings_for_project(@project) %>
+<% settings = RdaProjectSetting.settings_for_project(@project).attributes %>
 
 <%=
   form_for @project,
