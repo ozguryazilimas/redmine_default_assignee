@@ -9,10 +9,10 @@
     <%= h l('redmine_default_assignee.settings.info') %>
     <br><br>
 
-    <% IssueStatus.order(:position).each do |issue_status| %>
+    <% issue_statuses.pluck(:id, :name).each do |issue_status_id, issue_status_name| %>
       <p>
-        <%= content_tag :label, issue_status.name %>
-        <%= select_tag "settings[default_assignee][#{issue_status.id}]", principals_options_for_select(all_users, settings.with_indifferent_access[:default_assignee][issue_status.id.to_s]), :include_blank => true %>
+        <%= content_tag :label, issue_status_name %>
+        <%= select_tag "settings[default_assignee][#{issue_status_id}]", principals_options_for_select(all_users, settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]), :include_blank => true %>
       </p>
     <% end %>
   </div>

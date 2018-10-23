@@ -2,6 +2,7 @@
 <%=
   render :partial => 'shared/redmine_default_assignee_settings', :locals => {
     :settings => settings,
+    :issue_statuses => RdaProjectSetting.related_issue_statuses,
     :all_users => RdaProjectSetting.all_assignable_users_and_groups
   }
 %>

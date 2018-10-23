@@ -23,5 +23,15 @@ class RdaProjectSetting < ActiveRecord::Base
     Principal.active.joins(:members => :roles).where(:type => types, :roles => {:assignable => true}).distinct.sorted
   end
 
+  def self.related_issue_statuses(target_project = nil)
+    scoped = IssueStatus.sorted
+
+    if target_project.present?
+      status_ids = WorkflowTransition.where(:tracker_id => target_project.tracker_ids).uniq.pluck(:old_status_id, :new_status_id).flatten.uniq
+      scoped = scoped.where(:id => status_ids)
+    end
+
+    scoped
+  end
 end
 
