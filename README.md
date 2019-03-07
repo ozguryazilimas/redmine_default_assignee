@@ -4,6 +4,14 @@ Automatically assigns an issue to a user if the issue status and user is configu
 either at generic Redmine Plugin Setting page or the per project setting where you enable the module for a project.
 This plugin is compatible with Redmine 3.x.
 
+## Setup
+
+You need to run plugin migrations to update schema for plugin
+
+```
+RAILS_ENV=production bundle exec rake redmine:plugins:migrate
+```
+
 ## Features
 
 1. Default settings can be saved.

@@ -2,6 +2,14 @@
 Redmine iş kayıtlarında belirli bir 'durum' seçildiğinde atanan bölümünün eklenti ayarlarında belirtilmiş kullanıcı seçilecek şekilde değişmesini sağlar.
 Redmine v3 uyumludur.
 
+## Kurulum
+
+Veritabanı şemasının eklentiye uygun olarak ayarlandığından emin olunuz
+
+```
+RAILS_ENV=production bundle exec rake redmine:plugins:migrate
+```
+
 ## Özellikleri
 1. Öntanımlı ayar kaydedilebilir.
 2. Her proje için etkin/pasif edilebilir.
