@@ -1,6 +1,7 @@
 # Default Assignee
 Redmine iş kayıtlarında belirli bir 'durum' seçildiğinde atanan bölümünün eklenti ayarlarında belirtilmiş kullanıcı seçilecek şekilde değişmesini sağlar.
-Redmine v3 uyumludur.
+
+Redmine 4.x sürümü ile uyumludur, Redmine 3.x sürümü ile kullanmak istiyorsanız redmine3 dalını kullanabilirsiniz.
 
 ## Kurulum
 

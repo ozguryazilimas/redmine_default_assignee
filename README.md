@@ -2,7 +2,8 @@
 
 Automatically assigns an issue to a user if the issue status and user is configured in plugin settings page,
 either at generic Redmine Plugin Setting page or the per project setting where you enable the module for a project.
-This plugin is compatible with Redmine 3.x.
+
+This plugin is compatible with Redmine 4.x. If you want to use it with Redmine 3.x please use redmine3 branch.
 
 ## Setup
 

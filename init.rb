@@ -5,10 +5,10 @@ Redmine::Plugin.register :redmine_default_assignee do
   name 'Redmine Default Assignee plugin'
   author 'Onur Kucuk'
   description 'Redmine plugin to define default assignees and assign them automatically on issue form'
-  version '0.7.0'
+  version '1.0.0'
   url 'http://www.ozguryazilim.com.tr'
   author_url 'http://www.ozguryazilim.com.tr'
-  requires_redmine :version_or_higher => '3.0.3'
+  requires_redmine :version_or_higher => '4.0.0'
 
 
   project_module :default_assignee do

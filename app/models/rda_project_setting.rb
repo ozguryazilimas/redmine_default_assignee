@@ -1,7 +1,7 @@
 
 class RdaProjectSetting < ActiveRecord::Base
 
-  attr_accessible :project_id, :default_assignee
+  attr_accessor :project_id, :default_assignee
 
   serialize :default_assignee
 
