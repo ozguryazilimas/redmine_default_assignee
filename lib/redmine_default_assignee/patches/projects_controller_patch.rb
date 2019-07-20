@@ -11,20 +11,18 @@ module RedmineDefaultAssignee
       module InstanceMethods
 
         def rda_project_settings
-          @settings = params[:settings]
-
           if params[:reset].present?
-            RdaProjectSetting.destroy_all(:project_id => @project.id)
+            RdaProjectSetting.for_project(@project).destroy_all
             flash[:notice] = l(:notice_successful_update)
           else
-            if params[:settings] && params[:settings][:default_assignee].present?
-              params[:settings][:default_assignee].reject!{|k, v| v.blank?}
-            end
+            @settings = params.require(:settings).permit!
+            @settings[:default_assignee] ||= {}
+            @settings[:default_assignee].reject!{|_, v| v.blank?}
 
             project_setting = RdaProjectSetting.for_project(@project).first_or_initialize
             project_setting.assign_attributes(@settings)
 
-            if project_setting.save!
+            if project_setting.save
               flash[:notice] = l(:notice_successful_update)
             else
               flash[:error] = l('redmine_default_assignee.project_settings.error_update_not_successful')
