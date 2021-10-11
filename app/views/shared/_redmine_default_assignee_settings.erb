@@ -9,10 +9,16 @@
     <%= h l('redmine_default_assignee.settings.info') %>
     <br><br>
 
+    <%
+        fake_user_author = User.new(:id => RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID,
+                                    :firstname => "<< #{l(:field_author)} >>")
+        all_users_with_author = [fake_user_author] + all_users.to_a
+    %>
+
     <% issue_statuses.pluck(:id, :name).each do |issue_status_id, issue_status_name| %>
       <p>
         <%= content_tag :label, issue_status_name %>
-        <%= select_tag "settings[default_assignee][#{issue_status_id}]", principals_options_for_select(all_users, settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]), :include_blank => true %>
+        <%= select_tag "settings[default_assignee][#{issue_status_id}]", principals_options_for_select(all_users_with_author, settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]), :include_blank => true %>
       </p>
     <% end %>
   </div>

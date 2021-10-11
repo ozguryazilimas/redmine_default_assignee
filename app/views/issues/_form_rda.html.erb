@@ -10,6 +10,10 @@
       var status_id = $('select#issue_status_id').val();
       var new_user_id = rda_status_user_mapping[status_id];
 
+      if (new_user_id === '<%= RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID %>') {
+        new_user_id = '<%= User.current.id %>';
+      }
+
       if (typeof new_user_id !== 'undefined') {
         // console.log('rda updating user status: ' + status_id + ' user: ' + new_user_id);
         $('select#issue_assigned_to_id').val(new_user_id);
