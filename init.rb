@@ -5,7 +5,7 @@ Redmine::Plugin.register :redmine_default_assignee do
   name 'Redmine Default Assignee plugin'
   author 'Onur Kucuk'
   description 'Redmine plugin to define default assignees and assign them automatically on issue form'
-  version '1.1.0'
+  version '1.2.0'
   url 'http://www.ozguryazilim.com.tr'
   author_url 'http://www.ozguryazilim.com.tr'
   requires_redmine :version_or_higher => '4.0.0'
@@ -18,15 +18,17 @@ Redmine::Plugin.register :redmine_default_assignee do
 
   settings :partial => 'redmine_default_assignee/settings',
     :default => {
-      :default_assignee => {}
+      :default_assignee => {},
+      :apply_on_context_menu => false
     }
 end
 
 Rails.configuration.to_prepare do
   [
+    [IssuesController, RedmineDefaultAssignee::Patches::IssuesControllerPatch],
     [SettingsController, RedmineDefaultAssignee::Patches::SettingsControllerPatch],
     [ProjectsController, RedmineDefaultAssignee::Patches::ProjectsControllerPatch],
-    [ProjectsHelper, RedmineDefaultAssignee::Patches::ProjectsHelperPatch],
+    [ProjectsHelper, RedmineDefaultAssignee::Patches::ProjectsHelperPatch]
   ].each do |classname, modulename|
     unless classname.included_modules.include?(modulename)
       classname.send(:include, modulename)

@@ -7,5 +7,6 @@ tr:
       info: 'İş kaydı formunda seçilen iş durumuna göre otomatik seçilen kullanıcılar.'
     project_settings:
       label_default_assignee: 'Öntanımlı Atanan'
+      label_apply_on_context_menu: 'Genel Menüde Uygula'
       error_update_not_successful: 'Proje ayarları güncellenirken bir sorun oluştu'
 

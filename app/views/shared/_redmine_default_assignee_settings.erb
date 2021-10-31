@@ -21,6 +21,14 @@
         <%= select_tag "settings[default_assignee][#{issue_status_id}]", principals_options_for_select(all_users_with_author, settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]), :include_blank => true %>
       </p>
     <% end %>
+
+    <br><br>
+
+    <p>
+      <%= content_tag :label, l('redmine_default_assignee.project_settings.label_apply_on_context_menu') %>
+      <%= check_box_tag 'settings[apply_on_context_menu]', 1, settings['apply_on_context_menu'] %>
+    </p>
+
   </div>
 </fieldset>
 

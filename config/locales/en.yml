@@ -7,5 +7,6 @@ en:
       info: 'Users that will be automatically selected based on the selected issue status.'
     project_settings:
       label_default_assignee: 'Default Assignee'
+      label_apply_on_context_menu: 'Apply on Context Menu'
       error_update_not_successful: 'Unable to update project settings'
 

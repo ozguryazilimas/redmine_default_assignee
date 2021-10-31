@@ -3,7 +3,12 @@
 Automatically assigns an issue to a user if the issue status and user is configured in plugin settings page,
 either at generic Redmine Plugin Setting page or the per project setting where you enable the module for a project.
 
+When Apply to Context Menu is selected and issue status is changed in the context menu (right click on issue list)
+assigned user will be automatically set at the server side. Note the user configured needs to be assignable to
+the issue selected, consistency of this settings responsibility belongs to the user that does the configuration.
+
 This plugin is compatible with Redmine 4.x. If you want to use it with Redmine 3.x please use redmine3 branch.
+
 
 ## Setup
 
@@ -21,7 +26,6 @@ RAILS_ENV=production bundle exec rake redmine:plugins:migrate
 
 
 ## Settings
-
 
 * As a project admin user go to project settings modules tab and enable Redmine Default Assignee.
 * If you prefer configuration specific to a project, go to Default Assignee tab on project settings as a project admin user. If there is no
