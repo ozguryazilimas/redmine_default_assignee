@@ -1,4 +1,4 @@
-class CreateModelBase < ActiveRecord::Migration[4.2]
+class CreateRdaProjectSettings < ActiveRecord::Migration[4.2]
 
   def change
     create_table :rda_project_settings do |t|
