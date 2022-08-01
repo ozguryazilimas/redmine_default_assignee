@@ -10,15 +10,25 @@
     <br><br>
 
     <%
-        fake_user_author = User.new(:id => RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID,
-                                    :firstname => "<< #{l(:field_author)} >>")
-        all_users_with_author = [fake_user_author] + all_users.to_a
-    %>
+      fake_user_author = User.new(:id => RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID, :firstname => "<< #{l(:field_author)} >>")
+      fake_user_me = User.new(:id => RedmineDefaultAssignee::SELECTED_USER_CURRENT_USER_ID, :firstname => "<< #{l(:label_me)} >>")
+      all_users_with_author = [fake_user_author, fake_user_me] + all_users.to_a
 
-    <% issue_statuses.pluck(:id, :name).each do |issue_status_id, issue_status_name| %>
+      issue_statuses.pluck(:id, :name).each do |issue_status_id, issue_status_name|
+        issue_status_setting = settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]
+        formatted_principal_options = principals_options_for_select(all_users_with_author, issue_status_setting)
+
+        # principals_options_for_select adds current user if it exists in the collection but it does not handle selected etc. also
+        # there is no option to not add it so we remove it from the string manually
+        if all_users_with_author.include?(User.current)
+          from_content_tag = content_tag('option', "<< #{I18n.t(:label_me)} >>", :value => User.current.id)
+          formatted_principal_options.sub!(from_content_tag, '')
+        end
+
+    %>
       <p>
         <%= content_tag :label, issue_status_name %>
-        <%= select_tag "settings[default_assignee][#{issue_status_id}]", principals_options_for_select(all_users_with_author, settings.with_indifferent_access[:default_assignee][issue_status_id.to_s]), :include_blank => true %>
+        <%= select_tag "settings[default_assignee][#{issue_status_id}]", formatted_principal_options, :include_blank => true %>
       </p>
     <% end %>
 

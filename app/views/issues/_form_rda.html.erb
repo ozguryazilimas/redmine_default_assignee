@@ -10,8 +10,10 @@
       var status_id = $('select#issue_status_id').val();
       var new_user_id = rda_status_user_mapping[status_id];
 
-      if (new_user_id === '<%= RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID %>') {
+      if (new_user_id === '<%= RedmineDefaultAssignee::SELECTED_USER_CURRENT_USER_ID %>') {
         new_user_id = '<%= User.current.id %>';
+      } else if (new_user_id === '<%= RedmineDefaultAssignee::SELECTED_USER_AUTHOR_ID %>') {
+        new_user_id = '<%= @issue.author_id %>';
       }
 
       if (typeof new_user_id !== 'undefined') {
