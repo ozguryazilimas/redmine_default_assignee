@@ -1,7 +1,7 @@
 
 class RdaProjectSetting < ActiveRecord::Base
 
-  serialize :default_assignee
+  serialize :default_assignee, JSON
 
   scope :for_project, ->(project) {
     proj_id = project.is_a?(Class) ? project.id : project
