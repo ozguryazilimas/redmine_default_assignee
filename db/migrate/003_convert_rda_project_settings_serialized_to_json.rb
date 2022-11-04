@@ -23,7 +23,12 @@ class ConvertRdaProjectSettingsSerializedToJson < ActiveRecord::Migration[5.2]
           column_offset += 1
           next if k.to_s.strip.blank?
 
-          val = quote(YAML.load(k).to_json)
+          if YAML.respond_to?(:unsafe_load)
+            val = quote(YAML.unsafe_load(k).to_json)
+          else
+            val = quote(YAML.load(k).to_json)
+          end
+
           processed_columns << format('%s = %s', column_names[column_offset], val)
         end
 

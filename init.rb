@@ -1,5 +1,5 @@
 require 'redmine'
-require 'redmine_default_assignee'
+require_dependency File.join(File.dirname(__FILE__), 'lib/redmine_default_assignee')
 
 Redmine::Plugin.register :redmine_default_assignee do
   name 'Redmine Default Assignee plugin'

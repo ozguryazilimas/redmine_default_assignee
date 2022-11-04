@@ -1,4 +1,4 @@
-require 'redmine_default_assignee/hooks/views_issues_hook'
+require_dependency File.join(File.dirname(__FILE__), 'redmine_default_assignee/hooks/views_issues_hook')
 
 module RedmineDefaultAssignee
 
