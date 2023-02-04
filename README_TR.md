@@ -5,7 +5,7 @@ Redmine iş kayıtlarında belirli bir 'durum' seçildiğinde atanan bölümün�
 Genel Menüde Uygula seçeneği seçildiğinde genel menü ile iş durumu değiştirildiğinde (iş listesine sağ tıklanarak) işlerin atananı
 ayarlanan kullanıcı olarak değiştirilir. Kullanıcının işlere atanabilir olması ayar yapan kullanıcının sorumluluğundadır.
 
-Redmine 4.x sürümü ile uyumludur, Redmine 3.x sürümü ile kullanmak istiyorsanız redmine3 dalını kullanabilirsiniz.
+Redmine 5.x ve 4.x sürümü ile uyumludur, Redmine 3.x sürümü ile kullanmak istiyorsanız redmine3 dalını kullanabilirsiniz.
 
 
 ## Kurulum

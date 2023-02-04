@@ -7,7 +7,7 @@ When Apply to Context Menu is selected and issue status is changed in the contex
 assigned user will be automatically set at the server side. Note the user configured needs to be assignable to
 the issue selected, consistency of this settings responsibility belongs to the user that does the configuration.
 
-This plugin is compatible with Redmine 4.x. If you want to use it with Redmine 3.x please use redmine3 branch.
+This plugin is compatible with Redmine 5.x and 4.x. If you want to use it with Redmine 3.x please use redmine3 branch.
 
 
 ## Setup
