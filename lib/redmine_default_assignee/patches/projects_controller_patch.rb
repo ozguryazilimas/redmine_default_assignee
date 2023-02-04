@@ -20,7 +20,8 @@ module RedmineDefaultAssignee
             @settings[:default_assignee].reject!{|_, v| v.blank?}
 
             project_setting = RdaProjectSetting.for_project(@project).first_or_initialize
-            project_setting.assign_attributes(@settings)
+            sanitized_settings = HashWithIndifferentAccess.new(@settings.to_h)
+            project_setting.assign_attributes(sanitized_settings)
 
             if project_setting.save
               flash[:notice] = l(:notice_successful_update)

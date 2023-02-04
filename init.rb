@@ -23,7 +23,7 @@ Redmine::Plugin.register :redmine_default_assignee do
     }
 end
 
-Rails.configuration.to_prepare do
+RedmineApp::Application.config.after_initialize do
   [
     [IssuesController, RedmineDefaultAssignee::Patches::IssuesControllerPatch],
     [SettingsController, RedmineDefaultAssignee::Patches::SettingsControllerPatch],
