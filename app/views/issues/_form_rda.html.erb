@@ -16,7 +16,9 @@
         new_user_id = '<%= @issue.author_id %>';
       }
 
-      if (typeof new_user_id !== 'undefined') {
+      var is_empty_object = !new_user_id || new_user_id.length === 0;
+
+      if (!is_empty_object) {
         // console.log('rda updating user status: ' + status_id + ' user: ' + new_user_id);
         $('select#issue_assigned_to_id').val(new_user_id);
       }
