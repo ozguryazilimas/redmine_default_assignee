@@ -1,11 +1,7 @@
 
 class RdaProjectSetting < ActiveRecord::Base
 
-  if Redmine::VERSION::MAJOR > 5
-    serialize :default_assignee
-  else
-    serialize :default_assignee, JSON
-  end
+  serialize :default_assignee
 
   scope :for_project, ->(project) {
     proj_id = project.is_a?(Class) ? project.id : project
