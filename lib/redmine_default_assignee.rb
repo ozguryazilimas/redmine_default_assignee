@@ -1,5 +1,3 @@
-require_dependency File.join(File.dirname(__FILE__), 'redmine_default_assignee/hooks/views_issues_hook')
-
 module RedmineDefaultAssignee
 
   SELECTED_USER_AUTHOR_ID = -2
@@ -10,4 +8,9 @@ module RedmineDefaultAssignee
   end
 
 end
+
+# Force-load the hook class so it registers with Redmine::Hook even though
+# nothing else references it by constant name. Referencing it (instead of
+# require/require_dependency) lets Zeitwerk autoload/reload it safely.
+RedmineDefaultAssignee::Hooks::ViewsIssuesHook
 
